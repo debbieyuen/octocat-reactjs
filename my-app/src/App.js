@@ -1,19 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-import React from 'react';
-import { Unity, useUnityContext } from 'react-unity-webgl';
+import React from "react";
+import Unity, { UnityContext } from "react-unity-webgl";
+
+const unityContext = new UnityContext({
+  loaderUrl: "./build_6/Build/build_6.loader.js",
+  dataUrl: "./build_6/Build/build_6.data",
+  frameworkUrl: "./build_6/Build/build_6.framework.js",
+  codeUrl: "./build_6/Build/build_6.wasm",
+});
 
 function App() {
-  const { unityProvider } = useUnityContext({
-    loaderUrl: "./build_6/Build/build_6.loader.js",
-    dataUrl: "./build_6/Build/build_6.data",
-    frameworkUrl: "./build_6/Build/build_6.framework.js",
-    codeUrl: "./build_6/Build/build_6.wasm",
-  })
   return (
+    
     <div className="App">
       <div className ="Unity">
-        <Unity unityProvider={unityProvider} 
+        <Unity unityContext={unityContext} 
         style= {{
           height: "100vh",
           width: "100%",
